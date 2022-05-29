@@ -1,0 +1,54 @@
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+Manager:
+    transition:WipeTransition()
+    FirstWindow:
+    SecondWindow:
+<FirstWindow>:
+    player1_name:player1_name.text
+    player2_name:player2_name.text
+
+    b:toss_button.text
+    name:"one"
+
+    GridLayout:
+        cols:1
+        rows:2
+
+        GridLayout:
+            cols:2
+            rows:2
+            padding:50,50
+            spacing:25,35
+            Label:
+                text:"Player1 name"
+                color:"green"
+                font_size:25
+            TextInput:
+                text: ""
+                font_size:40
+                multiline:False
+                id:player1_name
+
+            Label:
+                text:"Player2 name"
+                color:"yellow"
+                font_size:25
+            TextInput:
+                text: ""
+                font_size:40
+                multiline:False
+                id:player2_name
+        GridLayout:
+            cols:1
+            padding:100,100
+            Button:
+                text:"Toss"
+                color:"red"
+                background_color:"white"
+                id:toss_button
+                on_press:root.manager.current = "two"
+                on_press: root.show()
+                on_press: root.shownow()
+                on_press:root.open_popup()
+<SecondWindow>:
+    name:"two"
